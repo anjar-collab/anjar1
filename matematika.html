@@ -1,0 +1,3551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta 
+name="viewport" 
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="Website belajar matematika gratis oleh Anjar, mudah dipahami untuk semua">
+<meta name="google-site-verification" content="Id4_qBNyg2NYQqhlwnKtkm4rGgdG-2WNfz9p5aeks40" />
+<title>Belajar Matematika Edukasi Bersama Anjar</title>
+
+<style>
+
+  
+.option-button {
+    display: block;        /* tombol vertikal */
+    width: 100%;           /* lebar penuh container */
+    white-space: normal;   /* teks panjang turun baris baru */
+    word-wrap: break-word; /* pecah teks panjang */
+    text-align: center;    /* rata tengah */
+    padding: 10px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option-button:hover {
+    background-color: #d3f4ff;
+}
+
+  *{
+  will-change:auto;
+}
+
+body{
+  transform:translateZ(0);
+}
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* BODY FULL */
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-family:Segoe UI,sans-serif;
+
+  background:linear-gradient(270deg,#667eea,#764ba2,#6a11cb,#2575fc);
+  background-size:200% 200%;
+  animation:bgMove 12s ease infinite;
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  height:100%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  overflow:hidden;
+}
+
+/* PAGE */
+.page{
+  display:none;
+
+  width:100%;
+  height:100%;
+
+  padding:20px;
+
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+
+  text-align:center;
+
+  overflow-y:auto;
+}
+
+/* PAGE ACTIVE */
+.page.active{
+  display:flex;
+  animation:fade .3s ease;
+}
+
+/* SOAL */
+#question{
+  width:100%;
+
+  min-height:140px;
+  max-height:45vh;
+
+  overflow-y:auto;
+
+  padding:18px;
+
+  margin-top:10px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,0.08);
+
+  font-size:22px;
+  line-height:1.7;
+
+  text-align:left;
+
+  white-space:pre-line;
+  overflow-wrap:break-word;
+
+  -webkit-overflow-scrolling:touch;
+}
+
+/* JAWABAN */
+#options{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+
+  width:100%;
+
+  margin-top:15px;
+}
+
+/* TOMBOL */
+button,
+.option{
+  width:100%;
+
+  min-height:58px;
+
+  border:none;
+  border-radius:16px;
+
+  padding:14px;
+
+  font-size:17px;
+  font-weight:bold;
+
+  color:white;
+
+  cursor:pointer;
+
+  transition:all .2s ease;
+
+  white-space:normal;
+  overflow-wrap:break-word;
+}
+
+/* EFEK SENTUH HP */
+button:active,
+.option:active{
+  transform:scale(.96);
+}
+
+/* WARNA */
+.primary{
+  background:#f6c23e;
+  color:black;
+}
+
+.success{
+  background:#1cc88a;
+}
+
+.danger{
+  background:#e74a3b;
+}
+
+.option{
+  background:rgba(255,255,255,0.12);
+}
+
+/* INFO */
+.info{
+  padding:12px;
+  border-radius:14px;
+
+  background:rgba(255,255,255,0.1);
+
+  font-size:16px;
+}
+
+/* GRID MENU */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-top:15px;
+}
+
+/* ANIMASI */
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* HP KECIL */
+@media(max-width:480px){
+
+  h1{
+    font-size:24px;
+  }
+
+  #question{
+    font-size:18px;
+  }
+
+  button,
+  .option{
+    font-size:16px;
+  }
+
+}
+
+button:active{transform:scale(.95);}
+
+.primary{background:#f6c23e;color:black;}
+.success{background:#1cc88a;}
+.danger{background:#e74a3b;}
+
+/* GRID 2x2 */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:20px;
+}
+
+/* INFO */
+.info{
+padding:10px;
+border-radius:10px;
+background:rgba(255,255,255,0.1);
+margin-bottom:10px;
+}
+
+/* SOAL */
+#question{
+min-height:60px; /* FIX BIAR GA LONCAT */
+font-size:18px;
+}
+
+/* GRID JAWABAN 2x2 */
+#options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:10px;
+}
+
+/* TOMBOL JAWABAN */
+.option{
+width:100%;
+height:60px; /* bikin persegi panjang stabil */
+margin:0;
+background:rgba(255,255,255,0.15);
+color:white;
+font-size:18px;
+font-weight:bold;
+border-radius:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* HASIL */
+#page3 h1{
+animation:glow 1s infinite alternate;
+}
+@keyframes glow{
+from{text-shadow:0 0 10px #fff;}
+to{text-shadow:0 0 25px #00ffcc;}
+}
+
+.flash{
+animation:flashEffect 0.3s;
+}
+
+@keyframes flashEffect{
+0%{background-color:rgba(255,255,255,0.2);}
+100%{background-color:transparent;}
+}
+
+
+/* TRANSISI HALUS */
+.option{
+transition:all .3s ease;
+}
+
+/* SAAT DIPILIH */
+.option.selected{
+transform:scale(0.95);
+opacity:0.8;
+}
+
+/* BENAR */
+.option.correct{
+background:#1cc88a !important;
+transform:scale(1.05);
+}
+
+/* SALAH */
+.option.wrong{
+background:#e74a3b !important;
+}
+
+/* FADE SOAL */
+.fade-out{
+opacity:0;
+transform:translateY(10px);
+transition:all .3s ease;
+}
+.fade-in{
+opacity:1;
+transform:translateY(0);
+transition:all .3s ease;
+}
+
+
+#question {
+  width: 100%;
+  height: 40vh;
+
+  padding: 20px;
+  margin: 10px 0;
+  box-sizing: border-box;
+
+  font-size: 22px;
+  line-height: 1.5;
+  text-align: left;
+
+  overflow-y: auto;   /* 🔥 scroll vertikal */
+  overflow-x: hidden;
+
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+  
+
+
+.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.glow {
+  color: yellow;
+  text-align: center;
+  text-shadow:
+    0 0 5px yellow,
+    0 0 10px yellow,
+    0 0 20px orange,
+    0 0 40px orange;
+}
+
+
+.glow {
+  color: yellow;
+  animation: neon 1.5s infinite alternate;
+}
+/* =========================
+   PAGE 0 SMOOTH
+========================= */
+
+#page0{
+  position:relative;
+  overflow:hidden;
+
+  background:linear-gradient(
+    135deg,
+    #0f2027,
+    #203a43,
+    #2c5364
+  );
+
+  background-size:400% 400%;
+
+  animation:bgSmooth 12s ease infinite;
+}
+
+/* EFEK BULAT HALUS */
+#page0::before,
+#page0::after{
+  content:"";
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  border-radius:50%;
+
+  
+
+  opacity:0.35;
+
+  animation:floatBall 10s ease-in-out infinite;
+}
+
+#page0::before{
+  background:#00ffe1;
+  top:-100px;
+  left:-100px;
+}
+
+#page0::after{
+  background:#ff00ff;
+  bottom:-100px;
+  right:-100px;
+
+  animation-delay:5s;
+}
+
+/* KONTEN DI DEPAN */
+#page0 h1,
+#page0 p,
+#page0 button{
+  position:relative;
+  z-index:2;
+}
+
+/* JUDUL */
+#page0 h1{
+  font-size:52px;
+  margin-bottom:10px;
+
+  animation:smoothPop 1s ease;
+}
+
+/* TEXT */
+#page0 p{
+  font-size:20px;
+  line-height:1.6;
+}
+
+/* TOMBOL */
+#page0 button{
+  width:220px;
+
+  margin-top:20px;
+
+  border:none;
+  border-radius:18px;
+
+  padding:16px;
+
+  font-size:20px;
+  font-weight:bold;
+
+  background:linear-gradient(
+    45deg,
+    #00ffcc,
+    #00bfff
+  );
+
+  color:black;
+
+  box-shadow:
+    0 0 20px rgba(0,255,255,0.4);
+
+  transition:all .25s ease;
+}
+
+#page0 button:hover{
+  transform:translateY(-3px) scale(1.03);
+
+  box-shadow:
+    0 0 30px rgba(0,255,255,0.7);
+}
+
+#page0 button:active{
+  transform:scale(.96);
+}
+
+/* GLOW TEXT HALUS */
+.glow{
+  color:#fffacd;
+
+  text-shadow:
+    0 0 8px rgba(255,255,150,0.8),
+    0 0 18px rgba(255,200,0,0.5);
+
+  animation:glowSmooth 2s ease-in-out infinite alternate;
+}
+
+/* ANIMASI */
+@keyframes bgSmooth{
+  0%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+@keyframes glowSmooth{
+  from{
+    text-shadow:
+      0 0 5px #fff176,
+      0 0 10px #ffd54f;
+  }
+
+  to{
+    text-shadow:
+      0 0 12px #fff176,
+      0 0 25px #ffca28;
+  }
+}
+
+@keyframes floatBall{
+  0%{
+    transform:translateY(0px) translateX(0px);
+  }
+
+  50%{
+    transform:translateY(40px) translateX(30px);
+  }
+
+  100%{
+    transform:translateY(0px) translateX(0px);
+  }
+}
+
+@keyframes smoothPop{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.9);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* HP */
+@media(max-width:600px){
+
+  #page0 h1{
+    font-size:38px;
+  }
+
+  #page0 p{
+    font-size:17px;
+  }
+
+  #page0 button{
+    width:180px;
+    font-size:18px;
+  }
+
+}
+@keyframes neon {
+  from {
+    text-shadow:
+      0 0 5px yellow,
+      0 0 10px yellow;
+  }
+  to {
+    text-shadow:
+      0 0 20px orange,
+      0 0 40px red,
+      0 0 80px red;
+  }
+}
+
+.option {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+
+  font-size: 16px;
+  text-align: center;
+
+  /* 🔥 Ini penting biar teks panjang turun ke bawah */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  /* Biar tidak keluar dari box */
+  box-sizing: border-box;
+
+  border-radius: 1px;
+}
+
+
+.options-container {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  width:100%;
+}
+/* =========================
+   TABLET
+========================= */
+@media(max-width:900px){
+
+  .container{
+    width:100%;
+    height:100dvh;
+    border-radius:0;
+  }
+
+}
+
+/* =========================
+   HP
+========================= */
+@media(max-width:600px){
+
+  h1{
+    font-size:24px;
+  }
+
+  h3{
+    font-size:18px;
+  }
+
+  #question{
+    font-size:18px;
+    line-height:1.5;
+
+    min-height:120px;
+    max-height:38vh;
+  }
+
+  button,
+  .option{
+    min-height:54px;
+    font-size:16px;
+  }
+
+  .info{
+    font-size:15px;
+  }
+
+}
+
+/* =========================
+   LAPTOP BESAR
+========================= */
+@media(min-width:1200px){
+
+  .container{
+    max-width:1000px;
+  }
+
+  #question{
+    font-size:24px;
+  }
+
+  button,
+  .option{
+    font-size:18px;
+  }
+
+}
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.page{
+  width:100%;
+  height:100%;
+}
+
+#page2{
+  overflow-y:auto;
+}
+
+.container{
+  overflow:hidden;
+}
+#page2{
+    background:
+        linear-gradient(
+            135deg,
+            #07f336,
+            #634be7
+            
+        );
+
+        
+}
+
+#question{
+  width:100%;
+  max-width:900px;
+}
+
+#options{
+  width:100%;
+  max-width:900px;
+}
+/* =========================
+   ANIMASI PAGE
+========================= */
+
+/* =========================
+   SUPER SMOOTH PAGE
+========================= */
+
+.page{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  padding:20px;
+
+  opacity:0;
+  pointer-events:none;
+
+  transform:translate3d(40px,0,0);
+
+  transition:
+    transform .28s ease-out,
+    opacity .28s ease-out;
+
+  overflow-y:auto;
+
+  background:linear-gradient(135deg,#141e30,#243b55);
+}
+
+/* aktif */
+.page.active{
+  opacity:1;
+  pointer-events:auto;
+
+  transform:translate3d(0,0,0);
+
+  z-index:2;
+}
+
+/* keluar */
+.page.exit{
+  opacity:0;
+
+  transform:translate3d(-40px,0,0);
+}
+
+/* =========================
+   ANIMASI AWAL PAGE 0
+========================= */
+
+#page0.active h1{
+  animation:titleZoom .8s ease;
+}
+
+#page0.active p{
+  animation:textFade .9s ease;
+}
+
+#page0.active button{
+  animation:buttonPop 1s ease;
+}
+
+/* =========================
+   TOMBOL MODERN
+========================= */
+
+button{
+  position:relative;
+  overflow:hidden;
+
+  transition:
+    transform .15s ease,
+    filter .2s ease;
+}
+
+/* EFEK TEKAN */
+button:active{
+  transform:scale(.92);
+  filter:brightness(.9);
+}
+
+/* EFEK GELOMBANG */
+button::after{
+  content:"";
+
+  position:absolute;
+  left:50%;
+  top:50%;
+
+  width:0;
+  height:0;
+
+  background:rgba(255,255,255,0.35);
+
+  border-radius:50%;
+
+  transform:translate(-50%,-50%);
+
+  transition:
+    width .4s ease,
+    height .4s ease,
+    opacity .4s ease;
+
+  opacity:0;
+}
+
+button:active::after{
+  width:250px;
+  height:250px;
+  opacity:1;
+}
+
+/* =========================
+   KEYFRAMES
+========================= */
+
+@keyframes titleZoom{
+  0%{
+    opacity:0;
+    transform:scale(.5) translateY(-40px);
+  }
+
+  70%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes textFade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes buttonPop{
+  0%{
+    opacity:0;
+    transform:translateY(50px) scale(.7);
+  }
+
+  70%{
+    transform:scale(1.05);
+  }
+
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+/* =========================
+   SUPER SMOOTH ENGINE
+========================= */
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  backface-visibility:hidden;
+  transform:translateZ(0);
+
+  perspective:1000px;
+
+  overflow:hidden;
+}
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+.page{
+  opacity:0;
+
+  transform:
+    scale(1.03)
+    translateY(30px);
+
+ 
+
+  transition:
+    opacity .8s cubic-bezier(.22,1,.36,1),
+    transform .8s cubic-bezier(.22,1,.36,1),
+    filter .8s ease;
+
+  pointer-events:none;
+}
+
+/* PAGE AKTIF */
+.page.active{
+  display:flex !important;
+
+  opacity:1;
+
+  transform:
+    scale(1)
+    translateY(0);
+
+  
+
+  pointer-events:auto;
+
+  z-index:5;
+}
+
+/* PAGE KELUAR */
+.page.exit{
+  opacity:0;
+
+  transform:
+    scale(.96)
+    translateY(-20px);
+
+
+}
+
+/* =========================
+   PAGE 0 CINEMATIC
+========================= */
+
+#page0{
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at top left,#00ffff33,transparent 40%),
+    radial-gradient(circle at bottom right,#ff00ff33,transparent 40%),
+    linear-gradient(135deg,#050816,#111827,#1e293b);
+
+  animation:bgFlow 15s ease infinite;
+}
+
+/* EFEK CAHAYA */
+#page0::before,
+#page0::after{
+  content:"";
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  border-radius:50%;
+
+  
+
+  opacity:.25;
+
+  animation:floatGlow 12s ease-in-out infinite;
+}
+
+#page0::before{
+  background:#00ffff;
+  top:-200px;
+  left:-150px;
+}
+
+#page0::after{
+  background:#ff00ff;
+  bottom:-200px;
+  right:-150px;
+
+  animation-delay:6s;
+}
+
+/* =========================
+   ANIMASI BERKUMPUL
+========================= */
+
+#page0 h1,
+#page0 p,
+#page0 button{
+  position:relative;
+  z-index:5;
+}
+
+/* JUDUL */
+#page0 h1{
+  font-size:58px;
+  font-weight:900;
+  letter-spacing:2px;
+
+  animation:titleAssemble 1.8s cubic-bezier(.22,1,.36,1);
+
+  text-shadow:
+    0 0 10px #fff,
+    0 0 30px #00ffff;
+}
+
+/* TEKS */
+#page0 p{
+  animation:textAssemble 2s cubic-bezier(.22,1,.36,1);
+
+  font-size:22px;
+}
+
+/* TOMBOL */
+#page0 button{
+  animation:buttonFloat 2.2s cubic-bezier(.22,1,.36,1);
+
+  width:230px;
+
+  border:none;
+  border-radius:22px;
+
+  padding:18px;
+
+  font-size:21px;
+  font-weight:bold;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00ffe0,
+      #00bfff
+    );
+
+  color:#000;
+
+  box-shadow:
+    0 10px 40px rgba(0,255,255,.35);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+}
+
+/* HOVER */
+#page0 button:hover{
+  transform:translateY(-4px) scale(1.04);
+
+  box-shadow:
+    0 20px 60px rgba(0,255,255,.5);
+}
+
+/* KLIK */
+#page0 button:active{
+  transform:scale(.93);
+
+  filter:brightness(.9);
+}
+
+/* =========================
+   RIPPLE PREMIUM
+========================= */
+
+button{
+  overflow:hidden;
+  position:relative;
+}
+
+button::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:0;
+  height:0;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.35);
+
+  transform:translate(-50%,-50%);
+
+  transition:
+    width .5s ease,
+    height .5s ease,
+    opacity .5s ease;
+
+  opacity:0;
+}
+
+button:active::after{
+  width:350px;
+  height:350px;
+
+  opacity:1;
+}
+
+/* =========================
+   KEYFRAMES
+========================= */
+
+@keyframes titleAssemble{
+
+  0%{
+    opacity:0;
+
+    transform:
+      translateX(-300px)
+      translateY(-200px)
+      rotate(-25deg)
+      scale(.2);
+
+    
+  }
+
+  60%{
+    opacity:1;
+
+    transform:
+      scale(1.08)
+      rotate(2deg);
+  }
+
+  100%{
+    opacity:1;
+
+    transform:
+      scale(1)
+      rotate(0);
+
+    
+  }
+}
+
+@keyframes textAssemble{
+
+  0%{
+    opacity:0;
+
+    transform:
+      translateX(250px)
+      translateY(120px)
+      scale(.3);
+
+    
+  }
+
+  100%{
+    opacity:1;
+
+    transform:
+      translateX(0)
+      translateY(0)
+      scale(1);
+
+    
+  }
+}
+
+@keyframes buttonFloat{
+
+  0%{
+    opacity:0;
+
+    transform:
+      translateY(250px)
+      scale(.4);
+
+    
+  }
+
+  70%{
+    transform:
+      translateY(-10px)
+      scale(1.05);
+  }
+
+  100%{
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    
+  }
+}
+
+@keyframes bgFlow{
+  0%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:100% 50%;
+  }
+
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+@keyframes floatGlow{
+
+  0%{
+    transform:
+      translate(0,0)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate(40px,60px)
+      scale(1.2);
+  }
+
+  100%{
+    transform:
+      translate(0,0)
+      scale(1);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  #page0 h1{
+    font-size:42px;
+  }
+
+  #page0 p{
+    font-size:18px;
+  }
+
+  #page0 button{
+    width:190px;
+    font-size:18px;
+  }
+
+}
+/* =========================
+   ANIMASI SEMUA TOMBOL
+========================= */
+
+button,
+.option{
+  position:relative;
+  overflow:hidden;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    color .25s ease;
+
+  cursor:pointer;
+}
+
+/* EFEK HOVER */
+button:hover,
+.option:hover{
+
+  transform:
+    translateY(-4px)
+    scale(1.03);
+
+  background:#00d4ff !important;
+
+  color:white;
+
+  box-shadow:
+    0 10px 25px rgba(0,212,255,.45);
+}
+
+/* EFEK KLIK */
+button:active,
+.option:active{
+  transform:scale(.95);
+}
+
+/* EFEK CAHAYA BERJALAN */
+button::before,
+.option::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-120%;
+
+  width:60%;
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.5),
+      transparent
+    );
+
+  transform:skewX(-25deg);
+
+  transition:left .6s ease;
+}
+
+/* GERAK CAHAYA */
+button:hover::before,
+.option:hover::before{
+  left:140%;
+}
+
+/* WARNA KHUSUS */
+.primary:hover{
+  background:#e66262 !important;
+  color:rgb(247, 247, 247);
+}
+
+.success:hover{
+  background:#ff0000 !important;
+  color:black;
+}
+
+.danger:hover{
+  background:#ea8282 !important;
+}
+/* =========================
+   TOMBOL KEMBALI PAGE 1
+========================= */
+
+.back-btn{
+  width:auto !important;
+
+  min-width:140px;
+
+  padding:
+    12px 24px !important;
+
+  margin-top:20px;
+
+  border-radius:14px;
+
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:16px;
+}
+/* =========================
+   PAGE 1 BELANG ANIMASI
+========================= */
+
+#page1{
+  
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #084ae4 0px,
+      #0f172a 40px,
+      #1e293b 40px,
+      #3c3e3d 80px
+    );
+
+  animation:stripeMove 6s linear infinite;
+}
+
+/* EFEK CAHAYA */
+#page1::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.08),
+      transparent
+    );
+
+  animation:lightMove 5s linear infinite;
+}
+/* =========================
+   PAGE 2 BELANG ANIMASI
+========================= */
+
+#page2{
+  
+
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #60b8e1 0px,
+      #0ea5e9 35px,
+      #0284c7 35px,
+      #89c9e9 70px
+    );
+
+  animation:page2Stripe 5s linear infinite;
+}
+
+/* LAPISAN GLOW */
+#page2::before{
+  content:"";
+
+  position:absolute;
+  inset:0%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.12),
+      transparent 60%
+    );
+
+  animation:page2Glow 8s linear infinite;
+}
+/* =========================
+   WARNA HASIL JAWABAN
+========================= */
+
+/* BENAR */
+.option.correct{
+  background:#00d26a !important;
+  color:rgb(255, 255, 255) !important;
+
+  transform:scale(1.05);
+
+  box-shadow:
+    0 0 20px rgba(0,210,106,.6);
+}
+
+/* SALAH */
+.option.wrong{
+  background:#ff3b3b !important;
+  color:white !important;
+
+  opacity:.95;
+}
+
+/* MATIKAN HOVER SAAT SUDAH DIPILIH */
+.option.correct:hover,
+.option.wrong:hover{
+  transform:none;
+}
+/* =========================
+   PAGE 2 FUTURISTIC 3D
+========================= */
+
+#page2{
+
+
+  background:
+    linear-gradient(
+      135deg,
+      #020617,
+      #0f172a,
+      #111827,
+      #1e293b
+    );
+
+  background-size:400% 400%;
+
+  animation:bgMove3D 18s ease infinite;
+}
+
+/* LAYER BELAKANG */
+#page2::before{
+  content:"";
+
+  position:absolute;
+  inset:-20%;
+
+  background:
+    repeating-linear-gradient(
+      60deg,
+      rgba(0,255,255,.07) 0px,
+      rgba(0,255,255,.07) 2px,
+      transparent 2px,
+      transparent 80px
+    );
+
+  transform:
+    perspective(1000px)
+    rotateX(75deg)
+    scale(2);
+
+  animation:gridMove 10s linear infinite;
+
+  opacity:.9;
+}
+
+/* GLOW BESAR */
+#page2::after{
+  content:"";
+
+  position:absolute;
+  width:700px;
+  height:700px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,255,255,.18),
+      transparent 70%
+    );
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  animation:pulseGlow 6s ease-in-out infinite;
+}
+
+/* KONTEN DI DEPAN */
+#page2 *{
+  position:relative;
+  z-index:2;
+}
+
+/* =========================
+   ANIMASI
+========================= */
+
+/* BACKGROUND */
+@keyframes bgMove3D{
+
+  0%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:100% 50%;
+  }
+
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+/* GRID BERGERAK */
+@keyframes gridMove{
+
+  from{
+    transform:
+      perspective(1000px)
+      rotateX(75deg)
+      translateY(0)
+      scale(2);
+  }
+
+  to{
+    transform:
+      perspective(1000px)
+      rotateX(75deg)
+      translateY(80px)
+      scale(2);
+  }
+}
+
+/* GLOW HIDUP */
+@keyframes pulseGlow{
+
+  0%{
+    transform:
+      translate(-50%,-50%)
+      scale(1);
+
+    opacity:.5;
+  }
+
+  50%{
+    transform:
+      translate(-50%,-50%)
+      scale(1.2);
+
+    opacity:.9;
+  }
+
+  100%{
+    transform:
+      translate(-50%,-50%)
+      scale(1);
+
+    opacity:.5;
+  }
+}
+/* =========================
+   FIX TIDAK BISA GESER KANAN
+========================= */
+
+html,
+body{
+  overflow-x:hidden !important;
+  width:100%;
+  max-width:100%;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+.page,
+.container,
+#page0,
+#page1,
+#page2,
+#page3{
+  width:100%;
+  max-width:100vw;
+  overflow-x:hidden;
+}
+/* =========================
+   TEKS PAGE 2 PUTIH
+========================= */
+
+#page2 h1,
+#page2 h2,
+#page2 h3,
+#page2 p,
+#page2 span,
+#page2 .info,
+#page2 #score,
+#page2 #level,
+#page2 #stage,
+#page2 #questionNumber{
+  color:white !important;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,.35);
+}
+
+/* BOX INFO */
+#page2 .info{
+  background:rgba(255,255,255,.08);
+
+  border:
+    1px solid rgba(255,255,255,.15);
+
+  border-radius:14px;
+
+  padding:12px 16px;
+
+  backdrop-filter:blur(8px);
+}
+/* =========================
+   WARNING TIMER
+========================= */
+
+#warningText{
+  position:absolute;
+  top:20px;
+
+  left:50%;
+  transform:translateX(-50%);
+
+  padding:14px 28px;
+
+  border-radius:20px;
+
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:2px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff0000,
+      #ff6600
+    );
+
+  box-shadow:
+    0 0 20px rgba(255,0,0,.7),
+    0 0 50px rgba(255,80,0,.5);
+
+  text-shadow:
+    0 0 10px white,
+    0 0 20px yellow;
+
+  z-index:999;
+
+  opacity:0;
+
+  animation:none;
+
+  transition:.3s;
+}
+
+/* MUNCUL */
+#warningText.show{
+  opacity:1;
+
+  animation:
+    warningShake .4s infinite,
+    warningGlow 1s infinite alternate;
+}
+
+/* GOYANG */
+@keyframes warningShake{
+
+  0%{
+    transform:
+      translateX(-50%)
+      translateX(0);
+  }
+
+  25%{
+    transform:
+      translateX(-50%)
+      translateX(-5px);
+  }
+
+  50%{
+    transform:
+      translateX(-50%)
+      translateX(5px);
+  }
+
+  75%{
+    transform:
+      translateX(-50%)
+      translateX(-5px);
+  }
+
+  100%{
+    transform:
+      translateX(-50%)
+      translateX(0);
+  }
+}
+
+/* GLOW */
+@keyframes warningGlow{
+
+  from{
+    box-shadow:
+      0 0 15px red,
+      0 0 30px orange;
+  }
+
+  to{
+    box-shadow:
+      0 0 30px red,
+      0 0 60px yellow;
+  }
+}
+#warningText{
+  animation:
+    warningShake .4s infinite,
+    warningGlow 1s infinite alternate,
+    zoomWarn .6s infinite alternate;
+}
+
+/* ZOOM */
+@keyframes zoomWarn{
+
+  from{
+    transform:translateX(-50%) scale(1);
+  }
+
+  to{
+    transform:translateX(-50%) scale(1.08);
+  }
+
+}
+/* =========================
+   PAGE 3 CYBER GALAXY 3D
+========================= */
+
+#page3{
+  
+
+  background:
+    radial-gradient(circle at center,#4f46e522 0%,transparent 35%),
+    linear-gradient(
+      180deg,
+      #020024,
+      #090979,
+      #000000
+    );
+
+  animation:spaceMove 18s ease infinite;
+}
+
+/* BINTANG */
+#page3::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(cyan 1px, transparent 1px),
+    radial-gradient(#ff00ff 1px, transparent 1px);
+
+  background-size:
+    120px 120px,
+    180px 180px,
+    250px 250px;
+
+  animation:starsMove 20s linear infinite;
+
+  opacity:.7;
+}
+
+/* PLANET */
+#page3::after{
+  content:"";
+
+  position:absolute;
+
+  width:320px;
+  height:320px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #00ffff,
+      #0044ff,
+      #000
+    );
+
+  right:-80px;
+  bottom:-80px;
+
+  box-shadow:
+    0 0 60px #00ffff88,
+    0 0 120px #0044ff88;
+
+  animation:planetFloat 8s ease-in-out infinite;
+}
+
+/* KONTEN */
+#page3 *{
+  position:relative;
+  z-index:2;
+}
+
+/* JUDUL */
+#page3 h1{
+  font-size:64px;
+  color:white;
+
+  letter-spacing:4px;
+
+  text-transform:uppercase;
+
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 30px #00ffff,
+    0 0 60px #0066ff;
+
+  animation:titlePulse 2s infinite alternate;
+}
+
+/* BOX SCORE */
+#page3 .info{
+  margin-top:20px;
+
+  padding:22px 40px;
+
+  border-radius:30px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  border:
+    2px solid rgba(255,255,255,.12);
+
+  backdrop-filter:blur(14px);
+
+  color:white;
+
+  font-size:32px;
+  font-weight:bold;
+
+  box-shadow:
+    0 0 35px rgba(0,255,255,.3);
+
+  transform:
+    perspective(1000px)
+    rotateX(8deg);
+}
+
+/* TEKS HASIL */
+#resultText{
+  margin-top:25px;
+
+  font-size:34px;
+  font-weight:900;
+
+  color:#fff;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 30px cyan;
+
+  animation:textFloat 3s ease-in-out infinite;
+}
+
+/* TOMBOL */
+#page3 button{
+  width:250px;
+
+  margin-top:20px;
+
+  padding:18px;
+
+  border:none;
+  border-radius:30px;
+
+  font-size:20px;
+  font-weight:bold;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #06b6d4
+    );
+
+  box-shadow:
+    0 12px 35px rgba(0,255,255,.3);
+
+  transition:.3s;
+}
+
+/* HOVER */
+#page3 button:hover{
+  transform:
+    scale(1.08)
+    translateY(-5px);
+
+  box-shadow:
+    0 20px 50px rgba(0,255,255,.6);
+}
+
+/* =========================
+   ANIMASI
+========================= */
+
+@keyframes starsMove{
+  from{
+    transform:translateY(0);
+  }
+
+  to{
+    transform:translateY(200px);
+  }
+}
+
+@keyframes planetFloat{
+
+  0%{
+    transform:
+      translateY(0)
+      rotate(0deg);
+  }
+
+  50%{
+    transform:
+      translateY(-20px)
+      rotate(10deg);
+  }
+
+  100%{
+    transform:
+      translateY(0)
+      rotate(0deg);
+  }
+}
+
+@keyframes titlePulse{
+
+  from{
+    transform:scale(1);
+
+    text-shadow:
+      0 0 10px #00ffff,
+      0 0 30px #00ffff;
+  }
+
+  to{
+    transform:scale(1.05);
+
+    text-shadow:
+      0 0 20px #00ffff,
+      0 0 50px #0066ff,
+      0 0 80px #0066ff;
+  }
+}
+
+@keyframes textFloat{
+
+  0%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-8px);
+  }
+
+  100%{
+    transform:translateY(0);
+  }
+}
+
+@keyframes spaceMove{
+
+  0%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:100% 50%;
+  }
+
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+/* HP */
+@media(max-width:600px){
+
+  #page3 h1{
+    font-size:42px;
+  }
+
+  #page3 .info{
+    font-size:24px;
+    padding:18px 28px;
+  }
+
+  #resultText{
+    font-size:26px;
+  }
+
+  #page3 button{
+    width:210px;
+    font-size:18px;
+  }
+
+}
+/* 🔥 MODE HP: optimasi performa */
+@media (max-width: 768px) {
+
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  /* matikan background animasi berat */
+  body, #page0, #page2, #page3 {
+    animation: none !important;
+    background-attachment: fixed;
+  }
+
+  /* kurangi shadow (ini berat di HP) */
+  button, .option, .info {
+    box-shadow: none !important;
+  }
+
+  /* matikan efek glow berlapis */
+  #page3 h1, .glow {
+    text-shadow: none !important;
+  }
+
+}
+/* 🔥 LOCK FULL PAGE 2 (NO SCROLL) */
+#page2{
+  height: 100vh !important;
+  max-height: 100vh !important;
+  
+}
+
+/* container dalam page 2 juga dikunci */
+#page2 > div{
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* question tetap bisa scroll DALAM BOX saja */
+#question{
+  max-height: 35vh;
+  overflow-y: auto;
+}
+
+/* options tidak boleh bikin page melebar */
+#options{
+  overflow: hidden;
+}
+
+/* safety agar tidak ada scroll global */
+html, body{
+  overflow: hidden !important;
+}.page{
+  overflow: hidden !important;
+}/* 🔥 FIX WARNING TIMER BIAR LEBIH KECIL & RAPI */
+#warningText{
+  top: 10px;
+  padding: 6px 14px;     /* lebih kecil */
+  font-size: 14px;       /* kecilkan teks */
+  letter-spacing: 1px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 0 10px rgba(255,0,0,.5),
+    0 0 20px rgba(255,80,0,.3);
+
+  text-shadow:
+    0 0 5px white;
+}
+
+/* 🔥 MATIKAN ZOOM BERLEBIHAN */
+@keyframes zoomWarn{
+  from{
+    transform: translateX(-50%) scale(1);
+  }
+  to{
+    transform: translateX(-50%) scale(1.03); /* sebelumnya terlalu besar */
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+<div class="container">
+    
+    
+
+<!-- PAGE 0 -->
+<div id="page0" class="page active">
+<h1 class="glow">Welcome</h1>
+<img src="img/anjar.jpeg" style="
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #00ffe1;
+  animation:spin 6s linear infinite;
+">
+
+<style>
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(0deg);}
+}
+</style>
+
+<p class="glow" style="color : yellow;">
+Ayo asah otakmu <br />
+dengan cara memainkan game ini 🚀
+</p>
+
+<div style="
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+">
+
+  <button onclick="goToPage(1)" class="success" style="
+    width:120px;
+    padding:10px;
+    font-size:15px;
+    border-radius:12px;
+  ">
+    ▶️ Mulai
+  </button><br><br><br><br>
+
+  <button onclick="exitApp()" class="danger" style="
+    width:120px;
+    padding:10px;
+    font-size:15px;
+    border-radius:12px;
+  ">
+    ❌ Keluar
+  </button>
+
+</div><br><br>
+
+<p class="glow">© Hari Apri Takandjandji</p>
+</div>
+
+<br />
+
+
+<div id="page1" class="page">
+
+<div>
+
+<img src="img/anjar2.jpeg" style="
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #00ffe1;
+  box-shadow:0 0 20px rgba(0,255,255,0.5);
+  margin-bottom:15px;
+">
+
+<h1>📚 Pilih Jenjang</h1>
+
+<div class="grid">
+<button onclick="setSchool('SD')" class="primary">🧒 SD</button>
+<button onclick="setSchool('SMP')" class="primary">🎓 SMP</button>
+<button onclick="setSchool('SMA')" class="primary">📖 SMA</button>
+<button onclick="setSchool('SMK')" class="primary">⚙️ SMK</button>
+</div>
+</div>
+<br>
+<button onclick="goToPage(0)" class="danger back-btn">
+⬅️ Kembali
+</button>
+</div>
+
+<!-- PAGE 2 GAME -->
+ <div id="warningText">⚠ WAKTU HAMPIR HABIS ⚠</div>
+<div id="page2" class="page">
+<div class="line-bg"></div>
+<div class="dots"></div>
+<div>
+<div class="info">
+❤️ <span id="lives">3</span> |
+⏳ <span id="timer">15</span> |
+⭐ <span id="score">0</span>
+</div>
+
+
+<h3 id="levelInfo"></h3>
+<p id="question"></p>
+
+<div id="options"></div>
+</div>
+
+<button onclick="backToMenu()" class="primary">⬅️ Kembali</button>
+
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+<h1>🏁 Hasil</h1>
+
+<div class="info">
+⭐ Skor: <span id="finalScore">0</span>
+</div>
+
+<p id="resultText"></p>
+
+<button onclick="restartGame()" class="success">🔁 Main Lagi</button> <br>
+<button onclick="goToPage(1)" class="primary">🏠 Menu</button>
+</div>
+
+</div>
+
+
+<script>
+    
+    
+    
+let school="";
+let score=0;
+let lives=3;
+let correctAnswer=0;
+let timeLeft=30;
+let timerInterval;
+let questionCount=0;
+
+const pages=[
+document.getElementById("page0"),
+document.getElementById("page1"),
+document.getElementById("page2"),
+document.getElementById("page3")
+];
+
+const scoreEl=document.getElementById("score");
+const livesEl=document.getElementById("lives");
+const timer=document.getElementById("timer");
+const question=document.getElementById("question");
+const options=document.getElementById("options");
+const levelInfo=document.getElementById("levelInfo");
+
+const finalScoreEl=document.getElementById("finalScore");
+const resultText=document.getElementById("resultText");
+
+function goToPage(n){
+
+  pages.forEach(p=>{
+
+    if(p.classList.contains("active")){
+
+      p.classList.add("exit");
+
+      setTimeout(()=>{
+        p.classList.remove("active");
+        p.classList.remove("exit");
+      },700);
+
+    }
+
+  });
+
+  setTimeout(()=>{
+    pages[n].classList.add("active");
+  },250);
+
+}
+
+function setSchool(s){
+ school=s;
+ score=0;
+ lives=3;
+ questionCount=0;
+
+ scoreEl.innerText=score;
+ livesEl.innerText=lives;
+
+ goToPage(2);
+ generateQuestion();
+}
+
+function backToMenu(){
+ clearInterval(timerInterval);
+ goToPage(1);
+}
+
+function endGame(){
+ clearInterval(timerInterval);
+
+ finalScoreEl.innerText=score;
+
+ let text="";
+ if(score>=100) text="🔥 Hebat!";
+ else if(score>=50) text="👍 Bagus!";
+ else text="💪 Coba lagi!";
+
+ resultText.innerText=text;
+
+ goToPage(3);
+}
+
+function restartGame(){
+ score=0;
+ lives=3;
+ questionCount=0;
+
+ scoreEl.innerText=score;
+ livesEl.innerText=lives;
+
+ goToPage(2);
+ generateQuestion();
+}
+
+/* SOAL LAMA */
+function generateQuestion(){
+ clearInterval(timerInterval);
+ questionCount++;
+ function generateQuestion() {
+    // ... (Logika soal kamu) ...
+
+    // 1. Masukkan teks soal
+    question.innerText = soal; // Ganti 'soal' dengan nama variabel teksmu
+
+    // 2. 🔥 Eksekusi Pengecil Otomatis (Gunakan delay kecil agar akurat)
+    setTimeout(autoFitQuestion, 50); 
+
+    // 3. Lanjut buat tombol jawaban
+    generateOptions();
+}
+
+// ⏱️ TIMER SESUAI JENJANG
+if(school==="SD") timeLeft=30;
+else if(school==="SMP") timeLeft=35;
+else if(school==="SMA") timeLeft=40;
+else if(school==="SMK") timeLeft=45;
+
+startTimer();
+levelInfo.innerText=school+" - Soal "+questionCount;
+
+let a,b;
+
+if(school==="SD"){
+
+ let type=Math.floor(Math.random()*6);
+
+ // DATA REAL LIFE
+ let nama=["Ani","Budi","Siti","Rina","Doni","Tono","Lina","Rudi","Dewi","Agus"];
+ let benda=["apel","permen","buku","pensil","jeruk","kelereng","roti","telur","botol minum"]; 
+ let tempat=["rumah","sekolah","warung","pasar","kantin","toko"];
+ let aktivitas=["membeli","membawa","mengumpulkan","menyimpan","mengambil","menjual"];
+
+ let n=nama[Math.floor(Math.random()*nama.length)];
+ let item=benda[Math.floor(Math.random()*benda.length)];
+ let t=tempat[Math.floor(Math.random()*tempat.length)];
+ let act=aktivitas[Math.floor(Math.random()*aktivitas.length)];
+
+ let a,b,c;
+
+ // ================= PENJUMLAHAN =================
+ if(type===0){
+ a=Math.floor(Math.random()*20)+5;
+ b=Math.floor(Math.random()*15)+1;
+ correctAnswer=a+b; 
+
+ question.innerText=
+ `${n} pergi ke ${t} untuk ${act} ${item}. 
+ Awalnya ${n} sudah memiliki ${a} ${item} di rumah. 
+ Saat di ${t}, ${n} ${act} lagi sebanyak ${b} ${item}. 
+ Sekarang ${n} ingin menghitung semua ${item} yang dimilikinya agar bisa disimpan dengan rapi. 
+ Berapa jumlah seluruh ${item} ${n}?`;
+}
+
+// ================= PENGURANGAN =================
+else if(type===1){
+ a=Math.floor(Math.random()*25)+10;
+ b=Math.floor(Math.random()*10)+1;
+ correctAnswer=a-b;
+
+ question.innerText=
+ `${n} memiliki ${a} ${item} di ${t}. 
+ Kemudian ${n} bertemu temannya dan memberikan ${b} ${item} sebagai hadiah. 
+ Setelah itu, ${n} ingin mengetahui berapa sisa ${item} yang masih dimilikinya. 
+ Berapa sisa ${item} ${n} sekarang?`;
+} 
+
+// ================= PERKALIAN =================
+else if(type===2){
+ a=Math.floor(Math.random()*10)+2;
+ b=Math.floor(Math.random()*5)+2;
+ correctAnswer=a*b;
+
+ question.innerText=
+ ` ${n} membantu orang tua di ${t}. 
+ Di sana terdapat ${b} kotak ${item}. 
+ Setiap kotak berisi ${a} ${item}. 
+ ${n} ingin mengetahui jumlah semua ${item} untuk memastikan semuanya sudah dihitung dengan benar. 
+ Berapa jumlah seluruh ${item}?`;
+}
+
+// ================= PEMBAGIAN =================
+else if(type===3){
+ b=2 + Math.floor(Math.random()*3);
+ a=(Math.floor(Math.random()*10)+2)*b;
+ correctAnswer=a/b;
+
+ question.innerText=
+ `${n} memiliki ${a} ${item} yang akan dibagikan kepada ${b} orang temannya di ${t}. 
+ Semua ${item} harus dibagi sama rata agar adil. 
+ Sekarang ${n} ingin tahu berapa jumlah ${item} yang diterima setiap orang. 
+ Berapa ${item} yang diterima masing-masing?`;
+}
+
+// ================= CAMPURAN (+ -) =================
+else if(type===4){
+ a=Math.floor(Math.random()*20)+10;
+ b=Math.floor(Math.random()*10)+1;
+ c=Math.floor(Math.random()*5)+1;
+ correctAnswer=a+b-c;
+
+ question.innerText=
+  `${n} memiliki ${a} ${item} di ${t}. 
+ Kemudian ${n} ${act} lagi ${b} ${item}. 
+ Namun saat perjalanan pulang, ${c} ${item} hilang atau jatuh. 
+ Sekarang ${n} ingin menghitung jumlah akhir ${item} yang masih dimiliki. 
+ Berapa jumlah ${item} sekarang?`;
+}
+
+// ================= CAMPURAN (x +) =================
+else{
+ a=Math.floor(Math.random()*5)+2;
+ b=Math.floor(Math.random()*5)+2;
+ c=Math.floor(Math.random()*10)+1;
+ correctAnswer=a*b+c;
+
+ question.innerText=
+ `${n} berada di ${t} dan melihat ${b} kotak ${item}. 
+ Setiap kotak berisi ${a} ${item}. 
+ Setelah menghitung semua isi kotak, ${n} mendapatkan tambahan ${c} ${item} lagi dari temannya. 
+ Sekarang ${n} ingin mengetahui jumlah total ${item} yang dimilikinya. 
+  Berapa jumlah seluruh ${item}?`;
+}
+
+}
+
+//Soal SMP//
+else if(school==="SMP"){
+
+let type=Math.floor(Math.random()*6);
+let a,b,c,d;
+
+// ================= 1. OPERASI =================
+if(type===0){
+a=Math.floor(Math.random()*40)+20;
+b=Math.floor(Math.random()*30)+10;
+c=Math.floor(Math.random()*20)+5;
+
+correctAnswer=a;
+
+question.innerText=
+`📖 CERITA:
+
+Seseorang memiliki sebuah nilai rahasia yang belum diketahui.
+
+Nilai tersebut mengalami perubahan secara bertahap:
+➡️ Pertama, nilai itu DITAMBAH sebesar ${b}
+➡️ Kemudian hasilnya DIKURANGI sebesar ${c}
+
+Setelah kedua proses dilakukan, nilai akhirnya menjadi ${a + b - c}.
+
+━━━━━━━━━━━━━━━
+🧠 PEMAHAMAN:
+Jika kita ingin mencari nilai awal, maka kita harus membalik prosesnya:
+- Tambah → dibalik jadi kurang
+- Kurang → dibalik jadi tambah
+
+━━━━━━━━━━━━━━━
+❓ PERTANYAAN:
+Berapakah nilai awal sebelum mengalami perubahan?`;
+
+explanationText=
+`📌 PENYELESAIAN LANGKAH DEMI LANGKAH:
+
+Diketahui hasil akhir = ${a + b - c}
+
+Langkah 1:
+Balik operasi terakhir (dikurangi ${c})
+→ jadi ditambah ${c}
+
+Langkah 2:
+Balik operasi pertama (ditambah ${b})
+→ jadi dikurangi ${b}
+
+Perhitungan:
+= ${a + b - c} - ${b} + ${c}  
+= ${a}
+
+✅ Jadi nilai awal adalah ${a}`;
+}
+
+// ================= 2. PECAHAN =================
+else if(type===1){
+a=Math.floor(Math.random()*4)+1;
+b=Math.floor(Math.random()*4)+2;
+
+let hasil=(a/b)+(1/2);
+correctAnswer=a/b;
+
+question.innerText=
+`📖 CERITA:
+Seorang siswa menemukan sebuah pecahan misterius.
+
+Ia melakukan operasi:
+➡️ Pecahan tersebut DITAMBAH dengan 1/2
+
+Setelah ditambah, hasilnya menjadi ${hasil}.
+
+━━━━━━━━━━━━━━━
+🧠 PEMAHAMAN:
+Untuk mencari nilai awal:
+Jika ditambah → maka dibalik dengan dikurangi
+
+━━━━━━━━━━━━━━━
+❓ PERTANYAAN:
+Berapakah nilai pecahan sebelum ditambah 1/2?`;
+
+explanationText=
+`📌 PENYELESAIAN:
+
+Diketahui:
+Hasil akhir = ${hasil}
+
+Langkah:
+Kurangi dengan 1/2
+
+Perhitungan:
+= ${hasil} - 1/2  
+
+Hasil:
+= ${a}/${b}
+
+✅ Pecahan awal adalah ${a}/${b}`;
+}
+
+// ================= 3. PERBANDINGAN =================
+else if(type===2){
+a=Math.floor(Math.random()*4)+1;
+b=Math.floor(Math.random()*4)+1;
+c=Math.floor(Math.random()*10)+10;
+
+correctAnswer=(a*c)/(a+b);
+
+question.innerText=
+`📖 CERITA:
+
+Dua nilai dibandingkan dengan perbandingan ${a}:${b}.
+
+Artinya:
+- Nilai pertama terdiri dari ${a} bagian
+- Nilai kedua terdiri dari ${b} bagian
+
+Total kedua nilai tersebut adalah ${c}.
+
+━━━━━━━━━━━━━━━
+🧠 PEMAHAMAN:
+Langkah:
+1. Jumlahkan bagian → ${a} + ${b}
+2. Cari bagian pertama dari total
+
+━━━━━━━━━━━━━━━
+❓ PERTANYAAN:
+Berapakah nilai pertama tersebut?`;
+
+explanationText=
+`📌 PENYELESAIAN:
+
+Langkah 1:
+Total bagian = ${a} + ${b} = ${a+b}
+
+Langkah 2:
+Nilai pertama = (${a} / ${a+b}) × ${c}
+
+Perhitungan:
+= (${a}/${a+b}) × ${c}  
+= ${correctAnswer}
+
+✅ Nilai pertama adalah ${correctAnswer}`;
+}
+
+// ================= 4. ALJABAR =================
+else if(type===3){
+a=Math.floor(Math.random()*5)+2;
+b=Math.floor(Math.random()*10)+5;
+
+correctAnswer=(b-a)/2;
+
+question.innerText=
+`📖 CERITA:
+
+Sebuah bilangan x harus memenuhi persamaan berikut:
+
+2x + ${a} = ${b}
+
+Untuk menemukan nilai x, kita harus menyederhanakan persamaan.
+
+━━━━━━━━━━━━━━━
+🧠 PEMAHAMAN:
+Langkah umum:
+1. Pindahkan angka ke ruas kanan
+2. Sederhanakan
+3. Bagi jika ada koefisien
+
+━━━━━━━━━━━━━━━
+❓ PERTANYAAN:
+Berapakah nilai x?`;
+
+explanationText=
+`📌 PENYELESAIAN:
+
+Langkah 1:
+Pindahkan ${a} ke kanan
+2x = ${b} - ${a}
+
+Langkah 2:
+2x = ${b-a}
+
+Langkah 3:
+Bagi kedua ruas dengan 2
+x = ${b-a} ÷ 2
+
+Hasil:
+= ${correctAnswer}
+
+✅ Nilai x adalah ${correctAnswer}`;
+}
+
+// ================= 5. GEOMETRI =================
+else if(type===4){
+a=Math.floor(Math.random()*10)+5;
+b=Math.floor(Math.random()*5)+2;
+
+correctAnswer=(a*b)/2;
+
+question.innerText=
+`📖 CERITA:
+
+Sebuah bidang berbentuk persegi panjang memiliki:
+- Panjang = ${a} cm
+- Lebar = ${b} cm
+
+Biasanya luas dihitung dengan:
+L = panjang × lebar
+
+Namun dalam soal ini, yang diminta adalah hanya SETENGAH dari luas tersebut.
+
+━━━━━━━━━━━━━━━
+🧠 PEMAHAMAN:
+Langkah:
+1. Hitung luas penuh
+2. Bagi hasilnya dengan 2
+
+━━━━━━━━━━━━━━━
+❓ PERTANYAAN:
+Berapakah setengah luasnya?`;
+
+explanationText=
+`📌 PENYELESAIAN:
+
+Langkah 1:
+Luas penuh = ${a} × ${b} = ${a*b}
+
+Langkah 2:
+Setengah luas = ${a*b} ÷ 2
+
+Hasil:
+= ${correctAnswer}
+
+✅ Setengah luas adalah ${correctAnswer}`;
+}
+
+// ================= 6. STATISTIK =================
+else{
+let data=[];
+let total=0;
+
+for(let i=0;i<4;i++){
+let num=Math.floor(Math.random()*20)+1;
+data.push(num);
+total+=num;
+}
+
+let rata=Math.floor(total/4);
+correctAnswer=(rata*5)-total;
+
+question.innerText=
+`📖 CERITA:
+
+Diketahui rata-rata dari 5 data adalah ${rata}.
+
+Namun yang tersedia hanya 4 data:
+${data.join(", ")}
+
+Satu data hilang dan harus ditemukan agar rata-rata tetap benar.
+
+━━━━━━━━━━━━━━━
+🧠 PEMAHAMAN:
+Rumus rata-rata:
+mean = total ÷ banyak data
+
+Langkah:
+1. Cari total semua data
+2. Kurangi dengan jumlah data yang sudah ada
+
+━━━━━━━━━━━━━━━
+❓ PERTANYAAN:
+Berapakah nilai data kelima?`;
+
+explanationText=
+`📌 PENYELESAIAN:
+
+Langkah 1:
+Total semua data = ${rata} × 5 = ${rata*5}
+
+Langkah 2:
+Jumlah 4 data = ${total}
+
+Langkah 3:
+Data ke-5 = ${rata*5} - ${total}
+
+Hasil:
+= ${correctAnswer}
+
+✅ Data kelima adalah ${correctAnswer}`;
+}
+
+}
+//Soal untuk SMA
+
+// ================= SMA SUPER STORY =================
+else if(school==="SMA"){
+
+let type=Math.floor(Math.random()*12);
+let a,b,c,x;
+
+// ================= 1. LINEAR =================
+if(type===0){
+a=Math.floor(Math.random()*5)+2;
+b=Math.floor(Math.random()*20)+20;
+
+correctAnswer=b/a;
+
+question.innerText=
+`📚 Di sebuah toko alat tulis, Andi membeli beberapa buku dengan harga yang sama. 
+Penjual mengatakan bahwa harga satu buku adalah ${a} ribu rupiah.
+
+Setelah membayar, Andi mengeluarkan uang sebesar ${b} ribu rupiah. 
+Sekarang Andi ingin memastikan jumlah buku yang ia beli sudah benar.
+
+Berapa banyak buku yang dibeli Andi?`;
+}
+
+// ================= 2. KUADRAT =================
+else if(type===1){
+a=Math.floor(Math.random()*5)+1;
+b=Math.floor(Math.random()*5)+1;
+
+correctAnswer=a+b;
+
+question.innerText=
+`🌳 Sebuah taman memiliki bentuk persegi panjang. 
+Panjangnya adalah (x + ${a}) meter dan lebarnya adalah (x + ${b}) meter.
+
+Saat dihitung, luas taman tersebut dapat ditulis menjadi:
+x² + ${a+b}x + ${a*b}
+
+Pemilik taman ingin mengetahui sifat persamaan tersebut.
+
+Berapa jumlah akar-akar dari persamaan itu?`;
+}
+
+// ================= 3. FUNGSI =================
+else if(type===2){
+a=Math.floor(Math.random()*5)+1;
+b=Math.floor(Math.random()*10)+2;
+x=Math.floor(Math.random()*5)+2;
+
+correctAnswer=a*x+b;
+
+question.innerText=
+`🏪 Sebuah toko kecil mencatat bahwa keuntungan hariannya mengikuti rumus:
+f(x) = ${a}x + ${b}
+
+Di mana x adalah jumlah barang yang terjual.
+
+Hari ini toko berhasil menjual ${x} barang. 
+Pemilik toko ingin mengetahui berapa keuntungan yang diperoleh hari ini.
+
+Berapa hasilnya?`;
+}
+
+// ================= 4. GRADIEN =================
+else if(type===3){
+let x1=Math.floor(Math.random()*5);
+let y1=Math.floor(Math.random()*10);
+let x2=x1+Math.floor(Math.random()*5)+1;
+let y2=y1+Math.floor(Math.random()*10)+1;
+
+correctAnswer=(y2-y1)/(x2-x1);
+
+question.innerText=
+`📈 Seorang siswa menggambar grafik garis lurus pada bidang koordinat. 
+Garis tersebut melalui dua titik yaitu (${x1}, ${y1}) dan (${x2}, ${y2}).
+
+Guru meminta siswa menghitung kemiringan garis tersebut untuk memahami perubahan nilai.
+
+Berapa gradien garis itu?`;
+}
+
+// ================= 5. PANGKAT =================
+else if(type===4){
+a=Math.floor(Math.random()*3)+2;
+b=Math.floor(Math.random()*3)+3;
+
+correctAnswer=Math.pow(a,b);
+
+question.innerText=
+`🧫 Dalam sebuah penelitian, bakteri berkembang sangat cepat. 
+Setiap 1 jam jumlahnya menjadi ${a} kali lebih banyak dari sebelumnya.
+
+Jika awalnya hanya ada 1 bakteri, 
+setelah ${b} jam jumlahnya menjadi sangat banyak.
+
+Berapa jumlah bakteri setelah ${b} jam?`;
+}
+
+// ================= 6. AKAR =================
+else if(type===5){
+a=Math.floor(Math.random()*20)+10;
+
+correctAnswer=a;
+
+question.innerText=
+`🏟️ Sebuah lapangan berbentuk persegi memiliki luas ${a*a} meter persegi. 
+Panitia ingin memasang pagar di sekeliling lapangan dan perlu mengetahui panjang satu sisi.
+
+Berapa panjang sisi lapangan tersebut?`;
+}
+
+// ================= 7. LOG =================
+else if(type===6){
+a=Math.floor(Math.random()*3)+2;
+b=Math.floor(Math.random()*3)+2;
+
+correctAnswer=b;
+
+question.innerText=
+`📊 Seorang siswa mempelajari logaritma. 
+Ia menemukan bahwa:
+
+log basis ${a} dari ${Math.pow(a,b)} = x
+
+Untuk memastikan pemahamannya, ia mencoba menghitung nilai x.
+
+Berapa nilai x tersebut?`;
+}
+
+// ================= 8. TRIGONOMETRI =================
+else if(type===7){
+correctAnswer=1;
+
+question.innerText=
+`📐 Dalam pelajaran trigonometri, seorang siswa mempelajari identitas penting.
+
+Ia diminta menghitung:
+sin²(45°) + cos²(45°)
+
+Ia ingat bahwa ini adalah identitas dasar dalam trigonometri.
+
+Berapakah hasilnya?`;
+}
+
+// ================= 9. PYTHAGORAS =================
+else if(type===8){
+a=Math.floor(Math.random()*10)+3;
+b=Math.floor(Math.random()*10)+4;
+
+correctAnswer=Math.sqrt(a*a + b*b);
+
+question.innerText=
+`🪜 Sebuah tangga disandarkan ke tembok. 
+Tinggi yang dicapai tangga adalah ${a} meter dan jarak kaki tangga ke tembok adalah ${b} meter.
+
+Untuk keamanan, pemilik ingin mengetahui panjang tangga tersebut.
+
+Berapa panjang tangga itu?`;
+}
+
+// ================= 10. BARISAN =================
+else if(type===9){
+a=Math.floor(Math.random()*5)+2;
+b=Math.floor(Math.random()*5)+3;
+
+correctAnswer=a+(b-1)*a;
+
+question.innerText=
+`💰 Seorang siswa mulai menabung. 
+Pada bulan pertama ia menabung ${a} ribu rupiah, 
+dan setiap bulan jumlah tabungannya bertambah ${a} ribu rupiah dari bulan sebelumnya.
+
+Ia ingin mengetahui jumlah tabungan pada bulan ke-${b}.
+
+Berapa jumlahnya?`;
+}
+
+// ================= 11. DERET =================
+else if(type===10){
+a=Math.floor(Math.random()*5)+1;
+b=Math.floor(Math.random()*5)+2;
+let n=Math.floor(Math.random()*5)+3;
+
+correctAnswer=(n/2)*(2*a+(n-1)*b);
+
+question.innerText=
+`💵 Seorang siswa mencatat total tabungannya setiap bulan. 
+Ia mulai dengan ${a} ribu rupiah dan setiap bulan bertambah ${b} ribu rupiah.
+
+Setelah ${n} bulan, ia ingin menghitung total seluruh uang yang sudah ditabung.
+
+Berapa total tabungan tersebut?`;
+}
+
+// ================= 12. LIMIT =================
+else{
+a=Math.floor(Math.random()*5)+1;
+
+correctAnswer=2*a;
+
+question.innerText=
+`📉 Dalam pelajaran kalkulus, seorang siswa mempelajari konsep limit.
+
+Diberikan fungsi:
+f(x) = ${a}x + ${a}
+
+Ia diminta mencari nilai fungsi saat x mendekati 1.
+
+Berapa hasilnya?`;
+}
+
+
+}
+
+
+
+// ================= SMK (CERITA PANJANG + TANPA NAMA) =================
+else if(school==="SMK"){
+
+let type=Math.floor(Math.random()*8);
+
+let tempat=["sebuah bengkel","sebuah pabrik","sebuah laboratorium","sebuah gudang","area produksi","ruang mesin","tempat kerja teknik"];
+let alat=["mesin listrik","alat produksi","kendaraan operasional","pompa air","alat pemanas","generator","kompresor"];
+
+let t=tempat[Math.floor(Math.random()*tempat.length)];
+let a,b,c;
+
+// ================= 1. DAYA (P = V × I) =================
+if(type===0){
+a=Math.floor(Math.random()*200)+100; // V
+b=Math.floor(Math.random()*10)+1;   // I
+
+correctAnswer=a*b;
+
+question.innerText=
+`Di ${t}, terdapat sebuah ${alat[Math.floor(Math.random()*alat.length)]} yang sedang digunakan.  
+
+Alat tersebut bekerja dengan tegangan listrik sebesar ${a} volt dan arus listrik yang mengalir sebesar ${b} ampere.  
+
+Untuk memastikan alat bekerja dengan aman dan sesuai kapasitas, perlu dihitung besar daya listrik yang digunakan.  
+
+Dalam perhitungan teknik listrik digunakan rumus:  
+P = V × I  
+
+Dimana P adalah daya, V adalah tegangan, dan I adalah arus listrik.  
+
+Berdasarkan informasi tersebut, berapakah daya listrik yang digunakan oleh alat tersebut?`;
+}
+
+// ================= 2. ENERGI (E = P × t) =================
+else if(type===1){
+a=Math.floor(Math.random()*500)+200; // daya
+b=Math.floor(Math.random()*5)+1;     // waktu
+
+correctAnswer=a*b;
+
+question.innerText=
+`Di ${t}, sebuah ${alat[Math.floor(Math.random()*alat.length)]} digunakan untuk proses produksi.  
+
+Alat tersebut memiliki daya sebesar ${a} watt dan digunakan selama ${b} jam tanpa henti.  
+
+Untuk menghitung konsumsi energi listrik selama penggunaan, digunakan rumus:  
+E = P × t  
+
+Dimana E adalah energi, P adalah daya, dan t adalah waktu.  
+
+Berapakah total energi listrik yang digunakan selama alat tersebut beroperasi?`;
+}
+
+// ================= 3. KECEPATAN (v = s/t) =================
+else if(type===2){
+a=Math.floor(Math.random()*100)+50; // jarak
+b=Math.floor(Math.random()*5)+1;    // waktu
+
+correctAnswer=Math.round(a/b);
+
+question.innerText=
+`Di ${t}, sebuah kendaraan operasional digunakan untuk mengangkut barang.  
+
+Kendaraan tersebut menempuh jarak sejauh ${a} km dalam waktu ${b} jam.  
+
+Untuk mengetahui performa kendaraan, perlu dihitung kecepatan rata-ratanya dengan rumus:  
+v = s / t  
+
+Dimana v adalah kecepatan, s adalah jarak, dan t adalah waktu.  
+
+Berapakah kecepatan rata-rata kendaraan tersebut?`;
+}
+
+// ================= 4. OHM (V = I × R) =================
+else if(type===3){
+a=Math.floor(Math.random()*10)+1;  // I
+b=Math.floor(Math.random()*20)+5;  // R
+
+correctAnswer=a*b;
+
+question.innerText=
+`Di ${t}, sebuah rangkaian listrik sedang diperiksa untuk memastikan tidak terjadi kerusakan.  
+
+Arus listrik yang mengalir sebesar ${a} ampere dan hambatan pada rangkaian tersebut sebesar ${b} ohm.  
+
+Untuk mengetahui tegangan listrik pada rangkaian, digunakan hukum Ohm:  
+V = I × R  
+
+Dimana V adalah tegangan, I adalah arus, dan R adalah hambatan.  
+
+Berapakah tegangan pada rangkaian tersebut?`;
+}
+
+// ================= 5. USAHA (W = F × s) =================
+else if(type===4){
+a=Math.floor(Math.random()*50)+10; // gaya
+b=Math.floor(Math.random()*10)+2;  // jarak
+
+correctAnswer=a*b;
+
+question.innerText=
+`Di ${t}, sebuah benda dipindahkan menggunakan tenaga mekanik.  
+
+Gaya yang diberikan sebesar ${a} newton dan benda tersebut berpindah sejauh ${b} meter.  
+
+Untuk mengetahui usaha yang dilakukan selama proses tersebut, digunakan rumus:  
+W = F × s  
+
+Dimana W adalah usaha, F adalah gaya, dan s adalah jarak perpindahan.  
+
+Berapakah usaha yang dilakukan?`;
+}
+
+// ================= 6. DEBIT (Q = V/t) =================
+else if(type===5){
+a=Math.floor(Math.random()*100)+50; // volume
+b=Math.floor(Math.random()*10)+1;   // waktu
+
+correctAnswer=Math.round(a/b);
+
+question.innerText=
+`Di ${t}, sebuah sistem aliran air sedang diuji.  
+
+Dalam waktu ${b} detik, air yang mengalir memiliki volume sebesar ${a} liter.  
+
+Untuk mengetahui kapasitas aliran, digunakan rumus debit:  
+Q = V / t  
+
+Dimana Q adalah debit, V adalah volume, dan t adalah waktu.  
+
+Berapakah debit aliran air tersebut?`;
+}
+
+// ================= 7. ENERGI KINETIK =================
+else if(type===6){
+a=Math.floor(Math.random()*10)+1; // massa
+b=Math.floor(Math.random()*10)+5; // kecepatan
+
+correctAnswer=Math.round(0.5*a*b*b);
+
+question.innerText=
+`Di ${t}, sebuah benda bergerak sebagai bagian dari proses mekanik.  
+
+Massa benda tersebut adalah ${a} kg dan bergerak dengan kecepatan ${b} m/s.  
+
+Untuk menghitung energi gerak benda, digunakan rumus energi kinetik:  
+Ek = ½ × m × v²  
+
+Dimana m adalah massa dan v adalah kecepatan.  
+
+Berapakah energi kinetik benda tersebut?`;
+}
+
+// ================= 8. ENERGI POTENSIAL =================
+else{
+a=Math.floor(Math.random()*10)+1; // massa
+b=Math.floor(Math.random()*10)+1; // tinggi
+
+correctAnswer=a*10*b; // g = 10
+
+question.innerText=
+`Di ${t}, sebuah benda diangkat ke ketinggian tertentu menggunakan alat bantu.  
+
+Massa benda adalah ${a} kg dan berada pada ketinggian ${b} meter dari permukaan tanah.  
+
+Untuk menghitung energi potensial, digunakan rumus:  
+Ep = m × g × h  
+
+Dengan g = 10 m/s².  
+
+Berapakah energi potensial benda tersebut?`;
+}
+
+}
+
+generateOptions();
+function generateQuestion(){
+  // ... isi soal kamu
+}
+
+// 🔥 TARUH DI SINI (bebas, yang penting di luar)
+function autoFitText(element){
+  let maxFont = 22;
+  let minFont = 12;
+
+  element.style.fontSize = maxFont + "px";
+
+  while(element.scrollHeight > element.clientHeight && maxFont > minFont){
+    maxFont--;
+    element.style.fontSize = maxFont + "px";
+  }
+}
+function generateQuestion(){
+
+  if(school==="SD"){
+    // soal SD
+    correctAnswer = 12;
+
+  } else if(school==="SMP"){
+    // soal SMP
+    correctAnswer = 14.816653826;
+
+  } else if(school==="SMA"){
+    // soal SMA
+    correctAnswer = 25.987654321;
+  }
+
+  // 🔥 TARUH DI SINI (PALING AKHIR)
+  if (typeof correctAnswer === "number") {
+
+    if (school === "SD") {
+      correctAnswer = Math.round(correctAnswer);
+
+    } else if (school === "SMP") {
+      correctAnswer = Math.round(correctAnswer * 100) / 100;
+
+    } else if (school === "SMA") {
+      correctAnswer = Math.round(correctAnswer * 1000) / 1000;
+    }
+
+  }
+
+  // 🔥 setelah itu baru tampilkan soal
+  question.innerText = soal;
+
+  
+  generateOptions();
+}
+
+}
+
+
+function generateOptions(){
+options.innerHTML="";
+let answers=[correctAnswer];
+
+while(answers.length<4){
+let wrong=correctAnswer+Math.floor(Math.random()*10)-5;
+if(!answers.includes(wrong)) answers.push(wrong);
+}
+
+answers.sort(()=>Math.random()-0.5);
+
+answers.forEach(ans=>{
+let btn=document.createElement("button");
+btn.className="option";
+btn.innerText = ans.toString();
+
+btn.onclick=()=>{
+let all=document.querySelectorAll(".option");
+
+document.body.classList.add("flash");
+setTimeout(()=>document.body.classList.remove("flash"),300);
+
+/* efek tombol dipilih */
+btn.classList.add("selected");
+
+/* disable semua */
+all.forEach(b=>b.disabled=true);
+
+/* kasih warna dengan animasi */
+all.forEach(b=>{
+
+  let value = Number(b.innerText);
+
+  /* JAWABAN BENAR */
+  if(value === correctAnswer){
+
+    b.classList.remove("wrong");
+    b.classList.add("correct");
+
+  }
+
+  /* JAWABAN SALAH */
+  else{
+
+    b.classList.remove("correct");
+    b.classList.add("wrong");
+
+  }
+
+});
+
+/* animasi fade sebelum soal baru */
+setTimeout(()=>{
+question.classList.add("fade-out");
+options.classList.add("fade-out");
+},300);
+
+setTimeout(()=>{
+checkAnswer(ans);
+
+/* balik normal */
+question.classList.remove("fade-out");
+options.classList.remove("fade-out");
+
+question.classList.add("fade-in");
+options.classList.add("fade-in");
+
+setTimeout(()=>{
+question.classList.remove("fade-in");
+options.classList.remove("fade-in");
+},300);
+
+},700);
+};
+
+options.appendChild(btn);
+});
+}
+
+function checkAnswer(ans){
+if(ans===correctAnswer){
+score+=10;
+scoreEl.innerText=score;
+}else{
+lives--;
+livesEl.innerText=lives;
+
+if(lives<=0){
+endGame();
+return;
+}
+}
+generateQuestion();
+
+}
+
+function startTimer(){
+
+  timer.innerText = timeLeft;
+
+  timerInterval = setInterval(()=>{
+
+    timeLeft--;
+
+    timer.innerText = timeLeft;
+
+    // 🔥 WARNING MUNCUL
+    if(timeLeft <= 10){
+
+      warningText.classList.add("show");
+
+      // teks berubah sesuai waktu
+      warningText.innerText =
+      "⚠ " + timeLeft + " DTK ⚠";
+
+    }else{
+
+      warningText.classList.remove("show");
+
+    }
+
+    // ⏰ WAKTU HABIS
+    if(timeLeft <= 0){
+
+      clearInterval(timerInterval);
+
+      warningText.classList.remove("show");
+
+      lives--;
+
+      livesEl.innerText = lives;
+
+      if(lives <= 0){
+
+        endGame();
+
+      }else{
+
+        generateQuestion();
+
+      }
+
+    }
+
+  },1000);
+
+}
+
+
+
+function exitApp(){
+  document.getElementById("exitModal").style.display = "flex";
+}
+
+function closeExit(){
+  document.getElementById("exitModal").style.display = "none";
+}
+
+
+
+function confirmExit(){
+
+  // APK Android Studio
+  if(window.Android && Android.exitApp){
+
+    Android.exitApp();
+
+  }
+
+  // Browser biasa
+  else{
+
+    window.close();
+
+  }
+
+}
+
+
+
+</script>
+<div id="exitModal" style="
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+">
+
+  <div style="
+    background:#111827;
+    padding:18px;
+    border-radius:16px;
+    text-align:center;
+    width:240px;
+    box-shadow:0 0 25px rgba(0,255,255,0.3);
+    animation:pop .3s ease;
+  ">
+
+    <h3 style="
+      color:white;
+      margin-bottom:15px;
+      font-size:15px;
+      line-height:1.4;
+    ">
+      🚪 Kamu yakin ingin keluar dari game?
+    </h3>
+
+    <!-- tombol horizontal -->
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+    ">
+
+      <button onclick="confirmExit()" style="
+        flex:1;
+        background:#e74a3b;
+        color:white;
+        border:none;
+        padding:8px;
+        border-radius:8px;
+        font-size:13px;
+        cursor:pointer;
+      ">Ya</button><br><br>
+
+      <button onclick="closeExit()" style="
+        flex:1;
+        background:#1cc88a;
+        color:white;
+        border:none;
+        padding:8px;
+        border-radius:8px;
+        font-size:13px;
+        cursor:pointer;
+      ">Tidak</button>
+
+    </div>
+
+  </div>
+</div>
+</body>
+
+</html>
