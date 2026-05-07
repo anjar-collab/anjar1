@@ -10,7 +10,8 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="description" content="Website belajar matematika gratis oleh Anjar, mudah dipahami untuk semua">
 <meta name="google-site-verification" content="Id4_qBNyg2NYQqhlwnKtkm4rGgdG-2WNfz9p5aeks40" />
-<title>Belajar Matematika Edukasi Bersama Anjar</title>
+  <link rel="icon" href="favicon.png">
+<title>Matematika Edukasi Anjar</title>
 
 <style>
 
@@ -2194,6 +2195,32 @@ html, body{
   to{
     transform: translateX(-50%) scale(1.03); /* sebelumnya terlalu besar */
   }
+}#loading-screen{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+}
+
+.loader{
+    width:60px;
+    height:60px;
+    border:6px solid #333;
+    border-top:6px solid cyan;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
 }
 </style>
 
@@ -2201,6 +2228,10 @@ html, body{
 </head>
 
 <body>
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <h1>Loading...</h1>
+</div>
 <div class="container">
     
     
@@ -2276,6 +2307,7 @@ dengan cara memainkan game ini 🚀
   box-shadow:0 0 20px rgba(0,255,255,0.5);
   margin-bottom:15px;
 ">
+  
 
 <h1>📚 Pilih Jenjang</h1>
 
@@ -2334,7 +2366,17 @@ dengan cara memainkan game ini 🚀
 
 <script>
     
-    
+    window.onload = function(){
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("loading-screen")
+        .style.display = "none";
+
+    },1500);
+
+}
     
 let school="";
 let score=0;
